@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dj1',
+    'app01'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'dj1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str.format(BASE_DIR, '/templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -75,12 +77,25 @@ WSGI_APPLICATION = 'dj1.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# 'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'ytg',
+#         'HOST':'127.0.0.1',
+#         'PORT':'3306',
+#         'USER':'root',
+#         'PASSWORD':'123456'
+#     }
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get("MYSQL_DATABASE", 'django_demo'),
+        'USER': os.environ.get("MYSQL_USERNAME"),
+        'HOST': os.environ.get("MYSQL_ADDRESS").split(':')[0],
+        'PORT': os.environ.get("MYSQL_ADDRESS").split(':')[1],
+        'PASSWORD': os.environ.get("MYSQL_PASSWORD"),
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
-
+APPEND_SLASH=False
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
