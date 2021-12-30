@@ -5,7 +5,7 @@
 """
 from django.urls import path, include
 
-from . import views
+from app01 import views
 
 urlpatterns = [
     path('toadd',views.toadd),
