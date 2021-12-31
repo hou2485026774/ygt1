@@ -21,5 +21,5 @@ from dj1 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('add/',views.adduser),
-    path('user/',views.toadd)
+    path('',views.toadd)
 ]
