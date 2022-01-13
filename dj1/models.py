@@ -12,3 +12,8 @@ class User(models.Model):
     #设置生成的表的信息
     class Meta:
         db_table = 'user3'
+class Data1(models.Model):
+    id = models.AutoField(primary_key = True)
+    name = models.CharField(max_length=255)
+    sex = models.CharField(max_length=255)
+    citt = models.CharField(max_length=255)
